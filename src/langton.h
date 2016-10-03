@@ -16,7 +16,7 @@ typedef struct _langton_ant {
 
 langton_ant *langton_new_ant (int x, int y);
 void init_matrix (matrix *m, langton_color color);
-void langton_iterate (langton_ant *ants[], matrix *m);
+int langton_iterate (langton_ant *ants[], matrix *m);
 void langton_free_ant (langton_ant *a);
 
 #endif

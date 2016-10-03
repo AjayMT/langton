@@ -23,10 +23,15 @@ langton_ant *langton_new_ant (int x, int y)
   return a;
 }
 
-void langton_iterate (langton_ant *a, matrix *m)
+int langton_iterate (langton_ant *a, matrix *m)
 {
+  if (a->x < 0 || a->x >= m.cols) return 0;
+  if (a->y < 0 || a->y >= m.rows) return 0;
+
   langton_color color = matrix_get(m, a->x, a->y);
   // do shit
+
+  return 1;
 }
 
 void langton_free_ant (langton_ant *a)
