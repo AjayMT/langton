@@ -1,0 +1,10 @@
+
+{
+  "name": "langton",
+  "description": "langton's ant",
+  "version": "0.0.1",
+  "src": ["src/langton.h", "src/langton.c"],
+  "repo": "AjayMT/langton",
+  "license": "MIT",
+  "keywords": ["langton", "ant", "automaton"]
+}

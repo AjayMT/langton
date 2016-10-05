@@ -4,8 +4,6 @@
 #include "langton.h"
 #include "matrix.h"
 
-#define NULL (void *)0
-
 void init_matrix (matrix *m, langton_color color)
 {
   for (int i = 0; i < m->cols; i++)
@@ -16,7 +14,7 @@ void init_matrix (matrix *m, langton_color color)
 langton_ant *langton_new_ant (int x, int y)
 {
   langton_ant *a = malloc(sizeof(langton_ant));
-  a->dir = LANGTON_Y;
+  a->dir = LANGTON_UP;
   a->x = x;
   a->y = y;
 
@@ -25,11 +23,31 @@ langton_ant *langton_new_ant (int x, int y)
 
 int langton_iterate (langton_ant *a, matrix *m)
 {
-  if (a->x < 0 || a->x >= m.cols) return 0;
-  if (a->y < 0 || a->y >= m.rows) return 0;
+  if (a->x < 0 || a->x >= m->cols) return 0;
+  if (a->y < 0 || a->y >= m->rows) return 0;
 
   langton_color color = matrix_get(m, a->x, a->y);
-  // do shit
+  matrix_set(m, a->x, a->y, (! color));
+
+  if (color) { // black
+    // move
+    a->x -= (a->dir == LANGTON_UP ? 1 : 0);
+    a->x += (a->dir == LANGTON_DOWN ? 1 : 0);
+    a->y -= (a->dir == LANGTON_LEFT ? 1 : 0);
+    a->y += (a->dir == LANGTON_RIGHT ? 1 : 0);
+
+    // rotate
+    a->dir = (a->dir + 3) % 4;
+  } else { // white
+    // move
+    a->x += (a->dir == LANGTON_UP ? 1 : 0);
+    a->x -= (a->dir == LANGTON_DOWN ? 1 : 0);
+    a->y += (a->dir == LANGTON_LEFT ? 1 : 0);
+    a->y -= (a->dir == LANGTON_RIGHT ? 1 : 0);
+
+    // rotate
+    a->dir = (a->dir + 1) % 4;
+  }
 
   return 1;
 }
