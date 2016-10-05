@@ -1,6 +1,6 @@
 
-all: src/langton.c src/langton.h src/matrix.c src/matrix.h
-	$(CC) -c src/langton.c
+all: src/langton.c src/langton.h
+	$(CC) -c src/langton.c -I deps/matrix
 
 clean:
 	rm -fr *.o

@@ -1,0 +1,10 @@
+
+{
+  "name": "matrix",
+  "description": "mutable 2d integer array",
+  "version": "0.0.1",
+  "src": ["src/matrix.h", "src/matrix.c"],
+  "repo": "AjayMT/matrix.c",
+  "license": "MIT",
+  "keywords": ["utility", "matrix", "array"]
+}
