@@ -20,9 +20,9 @@ typedef struct _langton_ant {
   langton_direction dir;
 } langton_ant;
 
-langton_ant *langton_new_ant (int x, int y);
-void init_matrix (matrix *m, langton_color color);
+langton_ant *langton_ant_new (int x, int y);
+void langton_fill_matrix (matrix *m, langton_color color);
 int langton_iterate (langton_ant *a, matrix *m);
-void langton_free_ant (langton_ant *a);
+void langton_ant_free (langton_ant *a);
 
 #endif

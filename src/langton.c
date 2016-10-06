@@ -4,14 +4,14 @@
 #include "langton.h"
 #include "matrix.h"
 
-void init_matrix (matrix *m, langton_color color)
+void langton_fill_matrix (matrix *m, langton_color color)
 {
   for (int i = 0; i < m->cols; i++)
     for (int j = 0; j < m->rows; j++)
       matrix_set(m, i, j, color);
 }
 
-langton_ant *langton_new_ant (int x, int y)
+langton_ant *langton_ant_new (int x, int y)
 {
   langton_ant *a = malloc(sizeof(langton_ant));
   a->dir = LANGTON_UP;
@@ -52,7 +52,7 @@ int langton_iterate (langton_ant *a, matrix *m)
   return 1;
 }
 
-void langton_free_ant (langton_ant *a)
+void langton_ant_free (langton_ant *a)
 {
   free(a);
 }
